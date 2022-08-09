@@ -7,13 +7,14 @@ const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 const { v4: uuidv4 } = require('uuid');
 
 
-router.get('/login', (req, res) => {
-    res.render('login');
+router.get('/login', forwardAuthenticated, (req, res) => {
+    res.render('login', { user: req.user, title: "Login" });
 });
 
-router.get ('/register', (req, res) => {
-    res.render('register');
-})
+router.get ('/register', forwardAuthenticated, (req, res) => {
+    res.render('register', {user: req.user, title: "SignUp"});
+});
+
 router.post("/register", async (req, res, next) => {
     console.log(req.body);
     let errors = [];

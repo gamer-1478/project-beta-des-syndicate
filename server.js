@@ -9,6 +9,9 @@ const express = require("express"),
     passport = require("passport"),
     bodyParser = require("body-parser"),
     authRouter = require("./routers/auth"),
+    indexRouter = require("./routers/index"),
+    shopRouter = require("./routers/shop"),
+
     flash = require("express-flash");
 
 app.set("view engine", "ejs");
@@ -38,9 +41,8 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/', authRouter);
-app.get('/', (req, res) => {
-    res.render('landing');
-})
+app.use('/', indexRouter);
+app.use('/', shopRouter);
 
 //body parsers 
 app.use(bodyParser.json({

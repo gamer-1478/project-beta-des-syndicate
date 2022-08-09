@@ -26,13 +26,16 @@
                     src="https://cdn.discordapp.com/attachments/1005877818586038424/1006499467207381062/search.png"
                     width="20px" />
             </div>
-
+            <% if (typeof user != "undefined"){ %>
             <a><img width="32px"
                     src="https://cdn.discordapp.com/attachments/1005877818586038424/1006499498572386345/cart.png"
                     alt="cart"></a>
             <a><img width="32px"
                     src="https://cdn.discordapp.com/attachments/1005877818586038424/1006499498874380359/profile.png"
                     alt="profile"></a>
+            <% } else { %>
+            <button class="sign-button" onclick="new function(){window.location.href = '/register'};">Sign up</button>
+            <% } %>
         </div>
         <div class="hamburger">
             <span class="bar"></span>
@@ -43,6 +46,16 @@
 </header>
 
 <style>
+    .sign-button {
+    background-color: #393E47;
+    color: white;
+    border-radius: 5px;
+    width: 140px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    }
 
     .right-side-nav {
         display: flex;
@@ -61,7 +74,7 @@
         list-style: none;
         color: #000;
     }
-    
+
     .nav-link,
     .nav-branding {
         color: black;

@@ -7,35 +7,46 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <a href="#" class="nav-branding">unica</a>
+            <a href="/" class="nav-branding">unica</a>
         </div>
+        <% if (typeof user != "undefined"){ %>
+        <div class="logged-in">
+            <a href="/cart"><img width="32px"
+                    src="https://cdn.discordapp.com/attachments/1005877818586038424/1006499498572386345/cart.png"
+                    alt="cart"></a>
+            <a href="/profile"><img width="32px"
+                    src="https://cdn.discordapp.com/attachments/1005877818586038424/1006499498874380359/profile.png"
+                    alt="profile"></a>
+        </div>
+        <% } else { %> 
         <button class="sign-button" onclick="new function(){window.location.href = '/register'};">Sign up</button>
+        <% } %> 
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="#" class="nav-link">Men</a>
+                <a href="/shop/men" class="nav-link">Men</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Women</a>
+                <a href="/shop/women" class="nav-link">Women</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Kids</a>
+                <a href="/shop/kids" class="nav-link">Kids</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Sports</a>
+                <a href="/shop/sports" class="nav-link">Sports</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">New</a>
+                <a href="/shop/new" class="nav-link">New</a>
             </li>
         </ul>
     </nav>
     <div class="socials" id="socials">
-        <a href="#" class="social-link">
+        <a href="" class="social-link">
             <i class="fab fa-facebook-f fa-lg"></i>
         </a>
-        <a href="#" class="social-link">
+        <a href="" class="social-link">
             <i class="fab fa-twitter fa-lg"></i>
         </a>
-        <a href="#" class="social-link">
+        <a href="" class="social-link">
             <i class="fab fa-instagram fa-lg"></i>
         </a>
     </div>
@@ -43,6 +54,13 @@
 </header>
 
 <style>
+    .logged-in {
+        display: flex;
+        justify-content: space-between;
+        width: 7vw;
+        align-items: center;
+        margin-right: 30px;
+    }
     .social-link {
         margin: 20px;
         cursor: pointer;
@@ -207,11 +225,10 @@
 <script>
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
-
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active");
         navMenu.classList.toggle("active");
-        if (document.getElementById('socials').style['z-index'] == -1){
+        if (document.getElementById('socials').style['z-index'] == -1) {
             document.getElementById('socials').style['z-index'] = 1;
         } else {
             document.getElementById('socials').style['z-index'] = -1;
