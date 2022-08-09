@@ -1,0 +1,120 @@
+<div>
+    <div class="landing-class">
+        <img class="landing-main" width="623"
+            src="https://cdn.discordapp.com/attachments/1005877818586038424/1006526241769279488/unknown.png">
+        <div class="signup">
+            <h1>Sign Up</h1>
+            <div class="signup-form">
+                <div class="field">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="John Doe">
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="John.Doe@email.com">
+                </div>
+                <div class="field">
+                    <label for="pass">Password</label>
+                    <input type="text" id="pass" name="pass" placeholder="J0#n@D0e@secret">
+                </div>
+                <div class="field">
+                    <label for="confpass">Confirm Password</label>
+                    <input type="text" id="confpass" name="confpass" placeholder="J0#n@D0e@secret">
+                </div>
+                <input type="button" value="proceed" onclick="submit();" class="signup-button" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .signup-button {
+        margin-top: 20px;
+        background-color: #393E47;
+        color: white;
+        border-radius: 5px;
+        width: 130px;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .field {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        width: 300px;
+        height: 20px;
+        border-radius: 15px;
+        border: 1px solid #BBBBBB;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: transparent;
+    }
+
+    .signup-form {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signup {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .landing-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .landing-main {
+        position: absolute;
+        top: 40px;
+        z-index: -1;
+    }
+</style>
+
+<script>
+    var notyf = new Notyf();
+
+    async function submit() {
+        var fullname = document.getElementById("fullname").value;
+        var email = document.getElementById("email").value;
+        var pass = document.getElementById("pass").value;
+        var confpass = document.getElementById("confpass").value;
+        if (pass != confpass){
+            notyf.error("Passwords do not match");
+            return;
+        }
+        await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: fullname,
+                email: email,
+                password: pass
+            })
+        }).then(async (response) => {
+            res = await response.json()
+            console.log(res)
+            if (res.success) {
+                await notyf.success('You have been successfully registered!');
+                window.location.href = "/dashboard"
+            } else {
+                await notyf.error(res[0].msg)
+            }
+        });
+    }
+
+</script>
