@@ -13,6 +13,8 @@
                     <label for="pass">Password</label>
                     <input type="text" id="pass" name="pass" placeholder="J0#n@D0e@secret">
                 </div>
+                <a href="/register" class="click-here">If you don't have a account, click here to
+                    register!</a>
                 <input type="button" value="proceed" onclick="submit();" class="signup-button" />
             </div>
         </div>
@@ -20,6 +22,13 @@
 </div>
 
 <style>
+        .click-here {
+        color: #393E47;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        }
+
     .signup-button {
         margin-top: 20px;
         background-color: #393E47;
@@ -82,7 +91,7 @@
     async function submit() {
         var email = document.getElementById("email").value;
         var pass = document.getElementById("pass").value;
-        await fetch("/register", {
+        await fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -98,7 +107,7 @@
                 await notyf.success('You have been successfully registered!');
                 window.location.href = "/dashboard"
             } else {
-                await notyf.error(res[0].msg)
+                await notyf.error(res.message)
             }
         });
     }

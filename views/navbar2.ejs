@@ -9,7 +9,7 @@
             </div>
             <a href="#" class="nav-branding">unica</a>
         </div>
-        <button class="sign-button" onclick="()=>{window.location.href = '/register'}">Sign up</button>
+        <button class="sign-button" onclick="new function(){window.location.href = '/register'};">Sign up</button>
         <ul class="nav-menu">
             <li class="nav-item">
                 <a href="#" class="nav-link">Men</a>
@@ -28,7 +28,7 @@
             </li>
         </ul>
     </nav>
-    <div class="socials">
+    <div class="socials" id="socials">
         <a href="#" class="social-link">
             <i class="fab fa-facebook-f fa-lg"></i>
         </a>
@@ -211,6 +211,11 @@
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active");
         navMenu.classList.toggle("active");
+        if (document.getElementById('socials').style['z-index'] == -1){
+            document.getElementById('socials').style['z-index'] = 1;
+        } else {
+            document.getElementById('socials').style['z-index'] = -1;
+        };
     })
 
     document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
