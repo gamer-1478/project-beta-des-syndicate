@@ -43,6 +43,7 @@ app.use(express.json());
 app.use('/', authRouter);
 app.use('/', indexRouter);
 app.use('/', shopRouter);
+app.use('/public', express.static('public'))
 
 //body parsers 
 app.use(bodyParser.json({
