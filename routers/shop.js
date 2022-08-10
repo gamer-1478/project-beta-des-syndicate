@@ -41,7 +41,7 @@ var shoplist = [[{
 }]]
 
 router.get('/shop/:id', (req, res) => {
-    res.render('shop', { category: [req.params.id], navbar: true, user: req.user, shoplist: shoplist });
+    res.render('shop', { title: req.params.id + ' shop',category: [req.params.id], navbar: true, user: req.user, shoplist: shoplist });
 });
 
 router.get('/shop', (req, res) => {
