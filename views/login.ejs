@@ -105,7 +105,7 @@
             console.log(res)
             if (res.success) {
                 await notyf.success('You have been successfully registered!');
-                window.location.href = "/dashboard"
+                window.location.href = "/"
             } else {
                 await notyf.error(res.message)
             }

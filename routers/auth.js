@@ -77,7 +77,7 @@ router.post('/login', (req, res, next) => {
 // Logout User
 router.get('/logout', (req, res) => {
     req.logout();
-    res.send("Successfully Logged Out");
+    res.redirect('/');
 })
 
 function loginUser(req, res, next) {

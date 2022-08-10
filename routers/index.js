@@ -5,4 +5,13 @@ router.get('/', (req, res) => {
     res.render('landing', {user: req.user});
 });
 
+router.get('/cart', (req, res)=>{
+    res.render('cart', {user: req.user, navbar: true});
+})
+
+router.get('/dashboard', (req, res) => {
+    res.render('profile', { user: req.user, navbar: true });
+})
+
+
 module.exports = router;

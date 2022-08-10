@@ -1,0 +1,33 @@
+<div class="container-prof">
+    <h1 class="title-prof">Welcome Back!</h1>
+    <div>
+        <h2>Name: <%= user.username %></h2>
+        <h2>Email: <%= user.email %></h2>
+    </div>
+    <button class='sign-button' onclick="logout()">Logout</button>
+</div>
+
+<script>
+    function logout() {
+        window.location.href = "/logout";
+    }
+</script>
+
+<style>
+    .title-prof {
+        font-size: 72px;
+        font-weight: 600;
+        color: #000;
+        margin-top: 20px;
+    }
+
+    .container-prof {
+        width: 100vw;
+        height: 50vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 100px;
+    }
+</style>

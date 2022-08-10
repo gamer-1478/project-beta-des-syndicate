@@ -1,0 +1,104 @@
+<div>
+    <% if (typeof category != "undefined") {%>
+    <div class="filters">
+        <h3>Filters: </h3>
+        <% for (i in category){ %>
+        <p class="filter-cat"> <%= category[i] %></p>
+        <% } %>
+    </div>
+    <% } %>
+    <div class="shop-main">
+        <% for (i in shoplist){ %>
+        <div class="shop-item-list">
+            <% for (a in shoplist[i]){ %>
+            <div class="shop-item" onclick="changePage(<%= shoplist[i][a].id %>)">
+                <div class="shop-img">
+                    <img width="300px" src="<%= shoplist[i][a].image %>" alt="<%= shoplist[i][a].name %>">
+                </div>
+                <p class="shop-item-name"><%= shoplist[i][a].name %></p>
+                <p class="shop-item-price"><%= shoplist[i][a].price %></p>
+            </div>
+            <% } %>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<style>
+    .shop-item-price {
+        color: #FF4300;
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    .shop-item-name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 13px;
+    }
+    .shop-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+    }
+    .shop-img {
+        background-color: #e8e8e9;
+        border-radius: 10px;
+        width: 250px;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .shop-img img {
+        width: 400px;
+        transform: rotate(-30deg);
+    }
+
+    .shop-item-list {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-between;
+        align-items: center;
+        height: 50vh;
+    }
+
+    .shop-main {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .filters {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+
+    .filter-cat {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 18px;
+        border-radius: 12px;
+        background-color: #393E47;
+        color: white;
+    }
+</style>
+
+<script>
+    function changePage(id) {
+        window.location.href = "/shop-item?id=" + id;
+    }
+</script>
